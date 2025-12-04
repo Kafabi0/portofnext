@@ -9,7 +9,7 @@ export default function ProfilePage() {
         {/* Foto Profil */}
         <div className="flex justify-center mb-8">
           <Image
-            src="/profile.jpg" // ganti sesuai nama file kamu
+            src="/foto15.jpg"
             alt="Profile Picture"
             width={180}
             height={180}

@@ -11,8 +11,11 @@ import {
 } from "@/components/ui/resizable-navbar";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Navbare() {
+  const router = useRouter();
+
   //   const navItems = [
   //     {
   //       name: "Features",
@@ -46,20 +49,12 @@ export default function Navbare() {
               <NavbarButton variant="secondary">Tentang Saya</NavbarButton>
             </Link>
 
-            <Link href="/pricing">
-              <NavbarButton variant="secondary">Pricing</NavbarButton>
-            </Link>
+            <NavbarButton href="/profile" variant="secondary">
+              Profile
+            </NavbarButton>
 
             <Link href="/contact">
               <NavbarButton variant="secondary">Contact</NavbarButton>
-            </Link>
-
-            <Link href="/profile">
-              <NavbarButton variant="secondary">Profile</NavbarButton>
-            </Link>
-
-            <Link href="/call">
-              <NavbarButton variant="secondary">Book a call</NavbarButton>
             </Link>
           </div>
         </NavBody>
@@ -79,20 +74,43 @@ export default function Navbare() {
             onClose={() => setIsMobileMenuOpen(false)}
           >
             <div className="flex w-full flex-col gap-4">
+              
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="primary"
+                  className="w-full"
+                >
+                  Beranda
+                </NavbarButton>
+              
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="primary"
+                  className="w-full"
+                >
+                  Tentang Saya
+                </NavbarButton>
+
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  router.push("/profile");
+                }}
                 variant="primary"
                 className="w-full"
               >
-                Login
+                Profile
               </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
+
+             
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="primary"
+                  className="w-full"
+                >
+                  Contact
+                </NavbarButton>
+              
             </div>
           </MobileNavMenu>
         </MobileNav>
